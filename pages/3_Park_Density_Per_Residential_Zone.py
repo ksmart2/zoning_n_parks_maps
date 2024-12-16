@@ -16,8 +16,7 @@ the different residential zones.
 
 st.sidebar.title("About")
 st.sidebar.info(markdown)
-logo = "https://i.imgur.com/UbOXYAU.png"
-st.sidebar.image(logo)
+
 
 st.title("Density Map")
 st.markdown("""
