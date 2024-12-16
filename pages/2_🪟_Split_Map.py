@@ -4,7 +4,7 @@ import geopandas as gpd
 from streamlit_folium import st_folium
 
 # URL to the GeoJSON file in your GitHub repo (replace this with your actual URL)
-geojson_url = "https://github.com/ksmart2/zoning_n_parks_maps/blob/main/parks_gdf.geojson"
+geojson_url = "https://raw.githubusercontent.com/ksmart2/zoning_n_parks_maps/refs/heads/main/pages/2_%F0%9F%AA%9F_Split_Map.py"
 
 # Load the GeoDataFrame from the URL
 gdf = gpd.read_file(geojson_url)
