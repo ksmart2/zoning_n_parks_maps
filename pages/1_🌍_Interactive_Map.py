@@ -25,7 +25,7 @@ with st.expander("See source code"):
         m = leafmap.Map(center=[35.9606, -83.9207], zoom=12)
 
         # URLs for the GeoJSON data
-        buffer = "https://raw.githubusercontent.com/ksmart2/zoning_n_parks_maps/refs/heads/main/buffer_zones.geojson"
+        buffer = "https://raw.githubusercontent.com/ksmart2/zoning_n_parks_maps/refs/heads/main/buffer_zones.%20(2).geojson"
 
         
 
