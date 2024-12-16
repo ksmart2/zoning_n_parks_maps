@@ -19,7 +19,8 @@ with st.expander("See source code"):
     with st.echo():
 
         m = leafmap.Map(center=[35.9606, -83.9207], zoom=12)
-        i_counts_geom_gdf = "https://raw.githubusercontent.com/ksmart2/zoning_n_parks_maps/refs/heads/main/i_counts_geom_gdf.geojson"
+        geojson_url = "https://raw.githubusercontent.com/ksmart2/zoning_n_parks_maps/refs/heads/main/i_counts_geom_gdf.geojson"
+        i_counts_geom_gdf = gpd.read_file(geojson_url)
 
         for _, row in i_counts_geom_gdf.iterrows():
             folium.CircleMarker(
