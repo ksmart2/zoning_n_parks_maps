@@ -7,17 +7,19 @@ import folium
 st.set_page_config(layout="wide")
 
 markdown = """
-A Streamlit map template
-<https://github.com/opengeos/streamlit-map-template>
+The accessibility of the public parks in
+the City of Knoxville, Tennessee within
+the different residential zones.
 """
 
 st.sidebar.title("About")
 st.sidebar.info(markdown)
-logo = "https://i.imgur.com/UbOXYAU.png"
-st.sidebar.image(logo)
+
 
 st.title("Interactive Bubble Map for Count of Residential Zones That Intersect A Park Location")
-
+st.markdown("""
+An interactive bubble map was created to visualize the count of residential zones that intersect park locations. This map utilizes the count of residential zone intersects per park location. The bubble size provides a visual representation of the usefulness of each park. The size of each circle is proportional to the number of residential zones that intersect a park boundary. The map was made to be interactive so the user can click each circle to view the park name and the count of residential zones it services. This map reveals several patterns. The first, is that areas closer to downtown Knoxville tend to have more park locations. Additionally, parks in South Knoxville appear to service, on average, a larger number of residential zones than those in other parts of the city. This highlights a geographic trend in park accessibility. 
+""")
 with st.expander("See source code"):
     with st.echo():
 
