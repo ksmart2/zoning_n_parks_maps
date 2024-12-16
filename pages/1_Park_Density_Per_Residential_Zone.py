@@ -20,6 +20,9 @@ logo = "https://i.imgur.com/UbOXYAU.png"
 st.sidebar.image(logo)
 
 st.title("Density Map")
+st.markdown("""
+This map was designed to display the density of park locations within 400 meters of each residential zone. To calculate the park density for each residential area, a buffer was created around each residential zone using .buffer(). The buffer size was set to 400 meters, which is a reasonable walking distance to access a park. Since parks are represented as polygons and multipolygons, the centroid of each park was calculated to transform the geometry type into a POINT type. The POINT type is required for spatial joins. A spatial join was performed between the park centroids and the buffered residential zones. To do this, gpd.sjoin was used with the parameter predicate=’within’ to only count parks that are within the 1 kilometer buffer zone for each residential zone. After the join, each residential zone now has a count of how many parks are within 400 meters,  creating the density measure to be plotted on the map. On the map, the darker colors represent higher density of park locations per residential zone, while the lighter zones in red and orange have lower density, and zones in yellow have 0 parks within 400 meters.
+""")
 
 with st.expander("See source code"):
     with st.echo():
