@@ -7,9 +7,11 @@ from folium import LinearColormap
 # Set up Streamlit
 st.set_page_config(layout="wide")
 
+# Customize the sidebar
 markdown = """
-A Streamlit map template
-<https://github.com/opengeos/streamlit-map-template>
+The accessibility of the public parks in
+the City of Knoxville, Tennessee within
+the different residential zones.
 """
 
 st.sidebar.title("About")
