@@ -25,23 +25,19 @@ with st.expander("See source code"):
         # Initialize the map centered on Knoxville
         m = leafmap.Map(center=[35.9606, -83.9207], zoom=12)
 
-        # URLs for the GeoJSON data
+        # Link to the raw data for buffer zones
         buffer_url = "https://raw.githubusercontent.com/ksmart2/zoning_n_parks_maps/refs/heads/main/buffer_zones.%20(2).geojson"
 
-        # Load the data into GeoDataFrames
+        # Read the GeoJSON as a GeoDataFrame to assign color scale values
         buffer_gdf = gpd.read_file(buffer_url)
 
-        # Check the range of values in 'park_counts'
-        st.write(buffer_gdf['park_counts'].describe())  # Check the range and distribution
-
-        # Apply a color scale to the park_counts values
-        # Define the color scale (adjust min/max values based on your data distribution)
+        # Apply a color scale to the park_counts values 
         color_scale = LinearColormap(['gray', 'yellow', 'green', 'blue'], vmin=buffer_gdf['park_counts'].min(), vmax=buffer_gdf['park_counts'].max())
 
         # Convert GeoDataFrame to GeoJSON
         buffer_geojson = buffer_gdf.to_json()
 
-        # Add the GeoJSON layer to the map with custom color styling
+        # Add the GeoJSON layer to the map 
         folium.GeoJson(
             buffer_geojson,
             name="Buffer Zones with Park Counts",
@@ -56,5 +52,13 @@ with st.expander("See source code"):
         # Add the color scale legend to the map
         color_scale.add_to(m)
 
-# Display the map in Streamlit
+        # Add the park data for park reference 
+        parks = "https://raw.githubusercontent.com/ksmart2/zoning_n_parks_maps/refs/heads/main/parks_gdf%20(1).geojson"
+        m.add_geojson(parks, layer_name="Park Locations", style={"color": "red"})
+        legend = {
+                    "Parks": "red",
+                }
+        m.add_legend(title="Map Legend", legend_dict=legend)
+
+
 m.to_streamlit(height=700)
