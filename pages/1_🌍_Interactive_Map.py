@@ -29,7 +29,7 @@ with st.expander("See source code"):
 
         
 
-        m.add_json(
+        m.add_geojson(
             buffer,
             layer_name="Buffer Zones with Park Counts",
             color_column="park_counts",  
