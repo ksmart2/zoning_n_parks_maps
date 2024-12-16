@@ -52,7 +52,7 @@ with st.expander("See source code"):
         zones_gdf = zones_gdf.to_crs(epsg=4326)
 
         # Add zoning data to the map, styled by park_counts
-        m.add_geodf(
+        m.add_gdf(
             zones_gdf,
             layer_name="Zoning Areas with Park Counts",
             color_column="park_counts",  # Use 'park_counts' to style the map
@@ -62,7 +62,7 @@ with st.expander("See source code"):
         )
 
         # Add parks data (centroids) to the map
-        m.add_geodf(
+        m.add_gdf(
             parks_gdf,
             layer_name="Parks",
             color_column=None,  # No color styling for parks
