@@ -70,6 +70,5 @@ with st.expander("See source code"):
             legend_title="Parks"
         )
 
-# Display the map in Streamlit
 m.to_streamlit(height=700)
 
