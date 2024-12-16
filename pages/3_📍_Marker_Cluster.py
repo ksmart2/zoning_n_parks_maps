@@ -23,10 +23,10 @@ with st.expander("See source code"):
         zoning = "https://raw.githubusercontent.com/ksmart2/zoning_n_parks_maps/refs/heads/main/zoning_gdf.geojson"
 
         m.add_geojson(zoning, layer_name="Zoning Areas", style={"color": "blue"})
-        m.add_geojson(parks, layer_name="Park Locations", style={"color": "pink"})
+        m.add_geojson(parks, layer_name="Park Locations", style={"color": "red"})
 
         legend = {
-            "Parks": "pink",
+            "Parks": "red",
             "Residential Zones": "blue"
         }
 m.add_legend(title="Map Legend", legend_dict=legend)
