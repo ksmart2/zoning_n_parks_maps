@@ -20,14 +20,13 @@ st.title("Heatmap")
 with st.expander("See source code"):
     with st.echo():
         m = leafmap.Map(center=[35.9606, -83.9207], zoom=12)
-        i_counts_geom_gdf = "https://raw.githubusercontent.com/ksmart2/zoning_n_parks_maps/refs/heads/main/i_counts_geom_gdf%20(1).geojson"
-        
+        url = "https://raw.githubusercontent.com/ksmart2/zoning_n_parks_maps/refs/heads/main/i_counts_geom_gdf%20(1).geojson"
+        i_counts_geom_gdf = gpd.read_file(url)
+
+        heat_data = [[row.geometry.centroid.y, row.geometry.centroid.x, row['Count']] for _, row in i_counts_geom_gdf.iterrows()]
+
+        # Add the heatmap to the map
+        HeatMap(heat_data, radius=20).add_to(m)
 
         
-        m.add_heatmap(
-            i_counts_geom_gdf,
-            value="Count",
-            name="Heat map",
-            radius=20,
-        )
 m.to_streamlit(height=700)
