@@ -29,7 +29,7 @@ with st.expander("See source code"):
 
         
 
-        m.add_geojson(buffer, layer_name="Buffer Zones with Park Counts")
+        m.add_geojson(buffer, layer_name="Buffer Zones with Park Counts",color_column="park_counts", fill_color="YlGnBu",nan_fill_color="gray",legend_title="Park Density")
       
 
 m.to_streamlit(height=700)
