@@ -1,5 +1,7 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
+import folium
+import geopandas as gpd
 
 st.set_page_config(layout="wide")
 
@@ -17,13 +19,14 @@ st.title("Heatmap")
 
 with st.expander("See source code"):
     with st.echo():
-        filepath = "https://raw.githubusercontent.com/giswqs/leafmap/master/examples/data/us_cities.csv"
-        m = leafmap.Map(center=[40, -100], zoom=4)
+        m = leafmap.Map(center=[35.9606, -83.9207], zoom=12)
+        geojson_url = "https://raw.githubusercontent.com/ksmart2/zoning_n_parks_maps/refs/heads/main/i_counts_geom_gdf%20(1).geojson"
+        i_counts_geom_gdf = gpd.read_file(geojson_url)
+
+        
         m.add_heatmap(
-            filepath,
-            latitude="latitude",
-            longitude="longitude",
-            value="pop_max",
+            i_counts_geom_gdf,
+            value="Count",
             name="Heat map",
             radius=20,
         )
