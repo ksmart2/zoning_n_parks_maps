@@ -1,26 +1,21 @@
 import streamlit as st
-import leafmap.foliumap as leafmap
+import folium
+import geopandas as gpd
+from streamlit_folium import st_folium
 
-st.set_page_config(layout="wide")
+# URL to the GeoJSON file in your GitHub repo (replace this with your actual URL)
+geojson_url = "https://github.com/ksmart2/zoning_n_parks_maps/blob/main/parks_gdf.geojson"
 
-markdown = """
-A Streamlit map template
-<https://github.com/opengeos/streamlit-map-template>
-"""
+# Load the GeoDataFrame from the URL
+gdf = gpd.read_file(geojson_url)
 
-st.sidebar.title("About")
-st.sidebar.info(markdown)
-logo = "https://i.imgur.com/UbOXYAU.png"
-st.sidebar.image(logo)
+# Create a folium map centered on a specific location (for example, Knoxville, TN)
+m = folium.Map(location=[35.9606, -83.9207], zoom_start=12)
 
-st.title("Split-panel Map")
+# Add the GeoDataFrame to the map as a layer
+folium.GeoJson(gdf).add_to(m)
 
-with st.expander("See source code"):
-    with st.echo():
-        m = leafmap.Map()
-        m.split_map(
-            left_layer="ESA WorldCover 2020 S2 FCC", right_layer="ESA WorldCover 2020"
-        )
-        m.add_legend(title="ESA Land Cover", builtin_legend="ESA_WorldCover")
+# Display the map in Streamlit using st_folium
+st.title("Interactive Map of Parks & Zoning Datasets")
+st_folium(m, width=700, height=500)
 
-m.to_streamlit(height=700)
