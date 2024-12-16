@@ -32,7 +32,7 @@ with st.expander("See source code"):
         buffer_gdf = gpd.read_file(buffer_url)
 
         # Apply a color scale to the park_counts values 
-        color_scale = LinearColormap(['yellow', 'orange', 'pink', 'purple'], vmin=buffer_gdf['park_counts'].min(), vmax=buffer_gdf['park_counts'].max())
+        color_scale = LinearColormap(['gray', 'orange', 'yellow', 'blue'], vmin=buffer_gdf['park_counts'].min(), vmax=buffer_gdf['park_counts'].max())
 
         # Convert GeoDataFrame to GeoJSON
         buffer_geojson = buffer_gdf.to_json()
@@ -54,9 +54,9 @@ with st.expander("See source code"):
 
         # Add the park data for park reference 
         parks = "https://raw.githubusercontent.com/ksmart2/zoning_n_parks_maps/refs/heads/main/parks_gdf%20(1).geojson"
-        m.add_geojson(parks, layer_name="Park Locations", style={"color": "gray"})
+        m.add_geojson(parks, layer_name="Park Locations", style={"color": "green"})
         legend = {
-                    "Parks": "gray",
+                    "Parks": "green",
                 }
         m.add_legend(title="Map Legend", legend_dict=legend)
 
