@@ -3,7 +3,6 @@ import geopandas as gpd
 import folium
 import leafmap.foliumap as leafmap
 import json
-from shapely.geometry import mapping  # Import mapping from shapely
 
 # Set up Streamlit
 st.set_page_config(layout="wide")
@@ -53,9 +52,9 @@ with st.expander("See source code"):
         # Reproject back into EPSG:4326 for proper lat/lon coordinates
         zones_gdf = zones_gdf.to_crs(epsg=4326)
 
-        # Convert the geometries to GeoJSON format (handles all geometry types)
-        parks_geojson = parks_gdf.geometry.apply(lambda x: mapping(x)).to_list()
-        zoning_geojson = zoning_gdf.geometry.apply(lambda x: mapping(x)).to_list()
+        # Convert the entire GeoDataFrame into GeoJSON format
+        parks_geojson = parks_gdf.to_json()  # Converts the entire GeoDataFrame to GeoJSON
+        zoning_geojson = zoning_gdf.to_json()  # Converts the entire GeoDataFrame to GeoJSON
 
         # Add zoning data to the map, styled by park_counts
         folium.GeoJson(zoning_geojson).add_to(m)
