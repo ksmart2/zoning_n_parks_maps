@@ -4,18 +4,18 @@ import leafmap.foliumap as leafmap
 st.set_page_config(layout="wide")
 
 markdown = """
-A Streamlit map template
-<https://github.com/opengeos/streamlit-map-template>
+The accessibility of the public parks in
+the City of Knoxville, Tennessee within
+the different residential zones.
 """
 
 st.sidebar.title("About")
 st.sidebar.info(markdown)
-logo = "https://i.imgur.com/UbOXYAU.png"
-st.sidebar.image(logo)
+
 
 st.title("Interactive Map of Knoxville Parks and Zoning Areas")
 st.markdown("""
-The next map is an interactive map plotted using folium. This map includes the residential zones and their boundaries in orange, and the park locations and their boundaries in red. The user is able to click each zone and see all the related information for that zone from each dataset. 
+This map is an interactive map plotted using folium. This map includes the residential zones and their boundaries in blue, and the park locations and their boundaries in red. The user is able to click each zone and see all the related information for that zone from each dataset. 
 """)
 
 with st.expander("See source code"):
