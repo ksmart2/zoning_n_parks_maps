@@ -15,7 +15,7 @@ m = folium.Map(location=[35.9606, -83.9207], zoom_start=12)
 # Add the GeoDataFrame to the map as a layer
 folium.GeoJson(gdf).add_to(m)
 
-# Display the map in Streamlit using st_folium
+# Display the map in Streamlit using st_foliu
 st.title("Interactive Map of Parks & Zoning Datasets")
 st_folium(m, width=700, height=500)
 
