@@ -1,7 +1,7 @@
 import streamlit as st
-import leafmap.foliumap as leafmap
 import geopandas as gpd
 import folium
+import leafmap.foliumap as leafmap
 
 # Set up Streamlit
 st.set_page_config(layout="wide")
@@ -51,24 +51,14 @@ with st.expander("See source code"):
         # Reproject back into EPSG:4326 for proper lat/lon coordinates
         zones_gdf = zones_gdf.to_crs(epsg=4326)
 
+        # Convert the GeoDataFrames to GeoJSON format
+        zones_geojson = zones_gdf.to_json()
+        parks_geojson = parks_gdf.to_json()
+
         # Add zoning data to the map, styled by park_counts
-        m.add_gdf(
-            zones_gdf,
-            layer_name="Zoning Areas with Park Counts",
-            color_column="park_counts",  # Use 'park_counts' to style the map
-            fill_color="YlGnBu",  # Color scheme for park density
-            nan_fill_color="gray",  # Color for zones with no parks
-            legend_title="Park Density"
-        )
+        folium.GeoJson(zones_geojson).add_to(m)
 
         # Add parks data (centroids) to the map
-        m.add_gdf(
-            parks_gdf,
-            layer_name="Parks",
-            color_column=None,  # No color styling for parks
-            fill_color="green",
-            legend_title="Parks"
-        )
+        folium.GeoJson(parks_geojson).add_to(m)
 
 m.to_streamlit(height=700)
-
