@@ -22,6 +22,8 @@ with st.expander("See source code"):
         parks = "https://raw.githubusercontent.com/ksmart2/zoning_n_parks_maps/refs/heads/main/parks_gdf.geojson"
         zoning = "https://raw.githubusercontent.com/ksmart2/zoning_n_parks_maps/refs/heads/main/zoning_gdf.geojson"
 
+        parks = parks.drop(columns=['geotext'])
+
         m.add_geojson(zoning, layer_name="Zoning Areas", style={"color": "blue"})
         m.add_geojson(parks, layer_name="Park Locations", style={"color": "red"})
 
