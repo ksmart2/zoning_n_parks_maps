@@ -14,6 +14,9 @@ logo = "https://i.imgur.com/UbOXYAU.png"
 st.sidebar.image(logo)
 
 st.title("Interactive Map of Knoxville Parks and Zoning Areas")
+st.markdown("""
+The next map is an interactive map plotted using folium. This map includes the residential zones and their boundaries in orange, and the park locations and their boundaries in red. The user is able to click each zone and see all the related information for that zone from each dataset. 
+""")
 
 with st.expander("See source code"):
     with st.echo():
