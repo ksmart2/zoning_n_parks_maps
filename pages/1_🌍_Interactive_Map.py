@@ -25,13 +25,12 @@ with st.expander("See source code"):
         m = leafmap.Map(center=[35.9606, -83.9207], zoom=12)
 
         # URLs for the GeoJSON data
-        buffer_url = "https://raw.githubusercontent.com/ksmart2/zoning_n_parks_maps/refs/heads/main/buffer_zones.geojson"
+        buffer = "https://raw.githubusercontent.com/ksmart2/zoning_n_parks_maps/refs/heads/main/buffer_zones.geojson"
 
-        # Load the data into GeoDataFrames
-        buffer_gdf = gpd.read_file(buffer_url)
+        
 
-        m.add_gdf(
-            buffer_gdf,
+        m.add_json(
+            buffer,
             layer_name="Buffer Zones with Park Counts",
             color_column="park_counts",  
             fill_color="YlGnBu", 
